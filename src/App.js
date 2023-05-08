@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+
 import './App.css';
+import ChildComponent from './ChildComponent';
+import React from 'react';
+import { useState } from 'react';
+import CounterButton from './CounterButton';
+
+
 
 function App() {
+  const [count, setCount] = useState(0)
+
+  const increaseBy = (id) =>{
+    setCount(count + id)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   <div>
+      <CounterButton count={count} onClick={() => {
+        increaseBy(2)
+      }}/>
+      <CounterButton count={count}  onClick={() => {
+        increaseBy(4)
+      }}/>
+   </div>
+  )
 }
 
 export default App;
+
